@@ -69,3 +69,37 @@ func Test_false_true_false_one_row_it_mirror(t *testing.T) {
 		t.Errorf("%v != %v", expected, actual)
 	}
 }
+
+func Test_original_problem_in_first_row_it_mirror(t *testing.T) {
+	original := [][]bool{{false, true, true, false, true}}
+	expected := [][]bool{{false, true, false, false, true}}
+
+	converter := NewConverter()
+
+	actual := converter.NegativeMirrorOf(original)
+
+	if !reflect.DeepEqual(expected, actual) {
+		t.Errorf("%v != %v", expected, actual)
+	}
+}
+
+func Test_original_problem_it_mirror(t *testing.T) {
+	original := [][]bool{
+		{false, true, true, false, true},
+		{true, true, false, false, true},
+		{false, false, true, true, true},
+	}
+	expected := [][]bool{
+		{false, true, false, false, true},
+		{false, true, true, false, false},
+		{false, false, false, true, true},
+	}
+
+	converter := NewConverter()
+
+	actual := converter.NegativeMirrorOf(original)
+
+	if !reflect.DeepEqual(expected, actual) {
+		t.Errorf("%v != %v", expected, actual)
+	}
+}
