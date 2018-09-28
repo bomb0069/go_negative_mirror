@@ -103,3 +103,22 @@ func Test_original_problem_it_mirror(t *testing.T) {
 		t.Errorf("%v != %v", expected, actual)
 	}
 }
+
+func Test_original_problem_is_negative_mirror(t *testing.T) {
+	original := [][]bool{
+		{false, true, true, false, true},
+		{true, true, false, false, true},
+		{false, false, true, true, true},
+	}
+	negative_mirror := [][]bool{
+		{false, true, false, false, true},
+		{false, true, true, false, false},
+		{false, false, false, true, true},
+	}
+
+	orginalConverter := NewConverterWithOriginal(original)
+
+	if !orginalConverter.isNegativeMirrorOf(negative_mirror) {
+		t.Errorf("%v is not negative mirror of %v", negative_mirror, original)
+	}
+}
